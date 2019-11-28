@@ -27,6 +27,7 @@ SIFT(Scale-invariant feature transform)是一种检测图像的局部特征的�
 - 索引包括存储SIFT密钥（key）和从新图像中识别匹配的密钥。Lowe用了从k-d树改进的最佳优先搜索（[best-fin-first search][1]），仅使用有限的计算量就可以识别高可能性的最近邻居（nearest neighbor）。BFF算法使用了对k-d树改进的搜索次序，以便按查询位置的最近距离来搜索特征空间中的<font color = red>[bin][1]（不懂）</font>。为有效判断搜索次序，其需要使用堆结构的优先队列。
 - 通过从训练图像得到的关键点数据库里识别最近邻居，可以找到每个关键点的最佳候选匹配。最近邻居定义为从每个给定的SIFT描述符向量里欧氏距离最小的关键点。匹配正确的可能性通过取最近邻的距离与次近邻的距离之比确定。
 - Lowe的[paper][2]里拒绝了所有距离比大于0.8的匹配，这可以消除90%的错误匹配而只舍弃了低于5%的正确匹配。进一步提高BFF搜索的效率可以在检查了头200个最近邻候选点后停止。对于具有100,000个关键点的数据库，这可以使精确的最近邻居搜索的速度提高大约2个数量级，但正确匹配的数量损失不到5%。
+- 
 
 [1]:https://en.wikipedia.org/wiki/Best_bin_first
 [2]:http://ceessnoek.info/courses/computervisionbylearning/2014/lowe-ijcv2004.pdf
